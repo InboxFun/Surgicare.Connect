@@ -43,13 +43,17 @@ app.post('/api/add-patient', (req, res) => {
   res.status(201).json({ message: 'Patient added successfully!' });
 });
 
+// Serve React static build if exists
+const buildPath = path.join(__dirname, '..', 'build');
+if (fs.existsSync(buildPath)) {
+  app.use(express.static(buildPath));
+
+  // ✅ FIX: Change '/*' to '*'
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
-});
-
-// Serve React build
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
