@@ -7,25 +7,26 @@ const path = require('path');
 
 const app = express();
 const PORT = 5000;
-const EXCEL_FILE_PATH = path.join(__dirname, 'All_Patients.xlsx');
+const JSON_FILE_PATH = path.join(__dirname, 'patients.json');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// Load existing patients
+// Load existing patients from JSON
 const loadPatients = () => {
-  if (!fs.existsSync(EXCEL_FILE_PATH)) return [];
-  const workbook = xlsx.readFile(EXCEL_FILE_PATH);
-  const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  return xlsx.utils.sheet_to_json(sheet);
+  if (!fs.existsSync(JSON_FILE_PATH)) return [];
+  const data = fs.readFileSync(JSON_FILE_PATH, 'utf8');
+  try {
+    return JSON.parse(data);
+  } catch (err) {
+    console.error('Error parsing JSON:', err);
+    return [];
+  }
 };
 
-// Save updated list to Excel
+// Save updated list to JSON
 const savePatients = (patients) => {
-  const worksheet = xlsx.utils.json_to_sheet(patients);
-  const workbook = xlsx.utils.book_new();
-  xlsx.utils.book_append_sheet(workbook, worksheet, 'All Patients');
-  xlsx.writeFile(workbook, EXCEL_FILE_PATH);
+  fs.writeFileSync(JSON_FILE_PATH, JSON.stringify(patients, null, 2), 'utf8');
 };
 
 // GET: retrieve all patients
