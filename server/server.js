@@ -49,7 +49,7 @@ const buildPath = path.join(__dirname, '..', 'build');
 if (fs.existsSync(buildPath)) {
   app.use(express.static(buildPath));
 
-  // ✅ FIX: Change '/*' to '*'
+  
   app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });

@@ -8,5 +8,25 @@
     "mentalHealth": "Anxiety",
     "goals": "",
     "username": "suzaism25"
+  },
+  {
+    "firstName": "Sarah",
+    "lastName": "Schmidt",
+    "surgeryDate": "2025-07-08",
+    "surgeryType": "Lumpectomy",
+    "notes": "Diabetes",
+    "mentalHealth": "Depression",
+    "goals": "",
+    "username": "sarasch25"
+  },
+  {
+    "firstName": "Daisy",
+    "lastName": "Smith",
+    "surgeryDate": "2025-07-12",
+    "surgeryType": "Lumpectomy",
+    "notes": "",
+    "mentalHealth": "Body image concerns",
+    "goals": "",
+    "username": "daissmi25"
   }
 ]
