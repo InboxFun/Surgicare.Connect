@@ -45,7 +45,7 @@ app.post('/api/add-patient', (req, res) => {
 });
 
 // Serve React static build if exists
-const buildPath = path.join(__dirname, '..', 'build');
+const buildPath = path.join(__dirname, 'build');
 if (fs.existsSync(buildPath)) {
   app.use(express.static(buildPath));
 
