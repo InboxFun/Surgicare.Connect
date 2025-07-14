@@ -31,7 +31,7 @@ function AddPatientForm({ onAddPatient }) {
     const newPatient = { ...formData, username };
 
     try {
-      const response = await fetch('http://surgicare-connect.onrender.com/api/add-patient', {
+      const response = await fetch('https://surgicare-connect.onrender.com/api/add-patient', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
