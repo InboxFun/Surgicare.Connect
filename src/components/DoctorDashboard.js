@@ -36,7 +36,7 @@ function DoctorDashboard() {
 
   useEffect(() => {
     console.log('useEffect triggered');
-    fetch('http://https://surgicare-connect.onrender.com/api/patients')
+    fetch('http://surgicare-connect.onrender.com/api/patients')
       .then((res) => {
         console.log('Response received', res);
         if (!res.ok) {
